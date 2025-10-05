@@ -1,22 +1,22 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 
 int main()
 {
-        unsigned int P, Q, best_P, best_Q, eq, min;
+        unsigned int Q, best_P, best_Q, eq, min;
         int input;
-        P = Q = 1;
+        Q = 1;
         min = ~0;
 
         do {
                 scanf("%d", &input);
         } while (input < 1 || input > 1E6);
 
-        while (P + Q <= (int)sqrt(input)) {
-                for (int i = 1; i < Q; i++) {
-                        eq = (int)fabs(input - pow(i, 2) - pow(Q, 2));
+        while (Q * Q <= input) {
+                for (int P = 1; P <= Q; P++) {
+                        eq = abs(input - Q * Q - P * P);
                         if (eq < min) {
-                                best_P = i;
+                                best_P = P;
                                 best_Q = Q;
                                 min = eq;
                         }
